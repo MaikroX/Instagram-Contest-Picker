@@ -2,6 +2,10 @@ let wholeStuff = [];
 let resultName = [];
 let uniqueName = [];
 
+function init() {
+  checkEnable();
+}
+
 function check() {
   let search = document.getElementById("completeInput").value;
   search = search.toLowerCase();
@@ -22,10 +26,20 @@ function check() {
   let unique = Array.from(new Set(resultName));
   uniqueName.push(unique);
   console.log(unique);
+  document.getElementById("resultOfNames").innerHTML += /*html*/ `
+  <div class="how-many">Anzahl Gewinner: <span >${
+    uniqueName[0].length - 1
+  }</span></div>
+    `;
   for (let i = 0; i < uniqueName[0].length; i++) {
     let winner = uniqueName[0][i];
     winner = winner.substring(0, winner.length - 1);
-    found.innerHTML += `<div> ${winner} </div> `;
+    found.innerHTML += /*html*/ `
+      <div>
+        
+        <div>${winner}</div>
+      </div>
+    `;
   }
 }
 
@@ -36,10 +50,6 @@ function reset() {
   wholeStuff = [];
   resultName = [];
   uniqueName = [];
-  checkEnable();
-}
-
-function init() {
   checkEnable();
 }
 

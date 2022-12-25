@@ -74,3 +74,8 @@ body {
 .btn-red {
   background-color: rgb(203, 76, 76) !important;
 }
+
+.how-many {
+  font-weight: bold;
+  margin: 10px 0px 10px 0px;
+}

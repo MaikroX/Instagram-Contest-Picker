@@ -4,11 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dein Titel hier</title>
+    <title>Instagram Comment Win</title>
 
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/media.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/android-chrome-512x512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/android-chrome-512x512.png"
+    />
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
@@ -17,18 +29,28 @@
 
   <body onload="init()">
     <div class="whole-input">
-      <div><h1 class="headline">Instagram User Comment Picker</h1></div>
+      <div><h1 class="headline">Instagram comment win</h1></div>
       <div>
         <input id="completeInput" class="input-field" type="text" />
       </div>
       <div class="buttons">
         <div>
-          <button class="button-optics" onclick="check()" id="checkAll">
+          <button
+            class="button-optics"
+            onclick="check()"
+            title="Copy & Paste all comments in the box above"
+            id="checkAll"
+          >
             CHECK
           </button>
         </div>
         <div>
-          <button class="button-optics btn-red" onclick="reset()" id="resetAll">
+          <button
+            class="button-optics btn-red"
+            onclick="reset()"
+            title="Reset all inputs and clear all boxes"
+            id="resetAll"
+          >
             RESET
           </button>
         </div>
