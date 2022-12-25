@@ -20,8 +20,18 @@
       <div>
         <input id="completeInput" class="input-field" type="text" />
       </div>
-      <div><button onclick="check()" id="checkAll">Let´s Go</button></div>
-
+      <div class="buttons">
+        <div>
+          <button class="button-optics" onclick="check()" id="checkAll">
+            CHECK
+          </button>
+        </div>
+        <div>
+          <button class="button-optics btn-red" onclick="reset()" id="resetAll">
+            RESET
+          </button>
+        </div>
+      </div>
       <div class="result" id="resultOfNames"></div>
     </div>
   </body>

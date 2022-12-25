@@ -23,5 +23,14 @@ function check() {
   document.getElementById("checkAll").classList.add("d-none");
 }
 
+function reset() {
+  document.getElementById("completeInput").value = "";
+  document.getElementById("resultOfNames").innerHTML = "";
+  document.getElementById("checkAll").classList.remove("d-none");
+  wholeStuff = [];
+  resultName = [];
+}
+
+//#endregion
 // Beispiel Post
 // https://www.instagram.com/p/CmHyd1Ho2oh/
