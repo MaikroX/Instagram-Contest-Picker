@@ -4,6 +4,10 @@ body {
   background-color: rgb(41, 41, 41);
 }
 
+.headline {
+  color: white;
+}
+
 .whole-input {
   display: flex;
   flex-direction: column;
@@ -51,7 +55,6 @@ body {
 
 .buttons {
   display: flex;
-  width: 200px;
   justify-content: space-around;
   align-items: center;
 }
