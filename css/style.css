@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: "roboto", sans-serif, Arial, Helvetica;
+  background-color: rgb(41, 41, 41);
+}
+
+.whole-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.input-field {
+  color: white;
+  background-color: rgb(89, 89, 89);
+  display: flex;
+  justify-content: flex-start;
+  width: 400px;
+  height: 100px;
+  word-wrap: normal;
+}
+
+.input-field:focus {
+  border: 2px solid rgba(77, 76, 76, 0.46);
+  outline: none;
+}
+
+.textarea {
+  width: 350px !important;
+}
+
+.result {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(84, 84, 84);
+  width: 400px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.d-none {
+  display: none;
+}
