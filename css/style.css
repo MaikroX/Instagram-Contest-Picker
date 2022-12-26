@@ -16,15 +16,33 @@ body {
   height: 100vh;
 }
 
-.input-field {
+.how-many {
+  width: 400px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.how-many input {
+  background-color: rgb(89, 89, 89);
+  color: white;
+  border-radius: 4px;
+  border: 2px;
+  height: 36px;
+  width: 60px;
+  margin-left: 16px;
+}
+
+.copy-input-field {
   color: white;
   background-color: rgb(89, 89, 89);
   display: flex;
   justify-content: flex-start;
   width: 400px !important;
   height: 36px;
-  word-wrap: break-word;
-  word-break: break-all;
   border-radius: 4px;
   border: 2px;
 }
@@ -73,9 +91,4 @@ body {
 
 .btn-red {
   background-color: rgb(203, 76, 76) !important;
-}
-
-.how-many {
-  font-weight: bold;
-  margin: 10px 0px 10px 0px;
 }

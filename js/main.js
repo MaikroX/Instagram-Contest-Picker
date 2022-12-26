@@ -15,6 +15,13 @@ function check() {
   found.innerHTML = "";
   firstWinner = wholeStuff[0][0];
   resultName.push(firstWinner);
+  document.getElementById("checkAll").classList.add("d-none");
+  searchUserWhoComment(search);
+  deleteDublicates();
+  writeWinner(found);
+}
+
+function searchUserWhoComment(search) {
   for (let i = 0; i < wholeStuff[0].length; i++) {
     let name = wholeStuff[0][i];
     if (search.toLowerCase().includes(name && "Profilbild")) {
@@ -22,21 +29,23 @@ function check() {
       resultName.push(name);
     }
   }
-  document.getElementById("checkAll").classList.add("d-none");
+}
+
+function deleteDublicates() {
   let unique = Array.from(new Set(resultName));
   uniqueName.push(unique);
   console.log(unique);
   document.getElementById("resultOfNames").innerHTML += /*html*/ `
-  <div class="how-many">Anzahl Gewinner: <span >${
-    uniqueName[0].length - 1
-  }</span></div>
+  <div class="how-many">Anzahl Gewinner: <span >${uniqueName[0].length}</span></div>
     `;
+}
+
+function writeWinner(found) {
   for (let i = 0; i < uniqueName[0].length; i++) {
     let winner = uniqueName[0][i];
     winner = winner.substring(0, winner.length - 1);
     found.innerHTML += /*html*/ `
       <div>
-        
         <div>${winner}</div>
       </div>
     `;
