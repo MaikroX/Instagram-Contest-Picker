@@ -29,13 +29,32 @@
 
   <body onload="init()">
     <div class="whole-input">
-      <div><h1 class="headline">Instagram comment win</h1></div>
+      <div><h1 class="headline">Wer kommentiert, Gewinnt!</h1></div>
+
       <div class="how-many">
-        <div style="font-weight: bold">How many winner?</div>
+        <div style="font-weight: bold">Wähle die Anzahl der Gewinner?</div>
         <div>
-          <input id="howManyWin" type="number" min="1" max="98" />
+          <input id="howManyWin" type="number" min="1" max="99" />
         </div>
       </div>
+
+      <div class="lucky-or-not">
+         
+        <input
+          type="radio"
+          id="notLucky"
+          name="luck"
+          value="notRandom"
+          checked="checked"
+        />
+        <label for="html">Als erste kommentiert</label>
+         
+        <!-- Radio Button vorerst disabled -->
+        <input type="radio" id="lucky" name="luck" value="random" disabled />  
+        <label for="html" style="color: gray">Zufällige Kommentare</label>
+        <!-- Radio Button vorerst disabled -->
+      </div>
+
       <div>
         <input id="completeInput" class="copy-input-field" type="text" />
       </div>

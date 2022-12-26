@@ -35,20 +35,36 @@ function deleteDublicates() {
   let unique = Array.from(new Set(resultName));
   uniqueName.push(unique);
   console.log(unique);
-  document.getElementById("resultOfNames").innerHTML += /*html*/ `
-  <div class="how-many">Anzahl Gewinner: <span >${uniqueName[0].length}</span></div>
-    `;
 }
 
 function writeWinner(found) {
-  for (let i = 0; i < uniqueName[0].length; i++) {
-    let winner = uniqueName[0][i];
-    winner = winner.substring(0, winner.length - 1);
+  let chosenWinner = document.getElementById("howManyWin").value;
+  if (chosenWinner == 0) {
+    alert("Bitte wähle aus wie viele Gewinner ermittelt werden sollen.");
+    document.getElementById("checkAll").classList.remove("d-none");
+  } else {
     found.innerHTML += /*html*/ `
+  <div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
+    `;
+    if (uniqueName[0].length < chosenWinner) {
+      alert(
+        `Es gibt leider zu wenig Mitspieler. Wähle maximal` +
+          ` ` +
+          uniqueName[0].length +
+          `.`
+      );
+      document.getElementById("checkAll").classList.remove("d-none");
+    } else {
+      for (let i = 0; i < chosenWinner; i++) {
+        let winner = uniqueName[0][i];
+        winner = winner.substring(0, winner.length - 1);
+        found.innerHTML += /*html*/ `
       <div>
         <div>${winner}</div>
       </div>
     `;
+      }
+    }
   }
 }
 
@@ -56,6 +72,7 @@ function reset() {
   document.getElementById("completeInput").value = "";
   document.getElementById("resultOfNames").innerHTML = "";
   document.getElementById("checkAll").classList.remove("d-none");
+  document.getElementById("howManyWin").value = "";
   wholeStuff = [];
   resultName = [];
   uniqueName = [];

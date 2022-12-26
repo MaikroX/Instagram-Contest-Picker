@@ -36,6 +36,13 @@ body {
   margin-left: 16px;
 }
 
+.lucky-or-not {
+  color: white;
+  margin-bottom: 8px;
+  font-style: bold;
+  font-weight: bold;
+}
+
 .copy-input-field {
   color: white;
   background-color: rgb(89, 89, 89);
@@ -91,4 +98,9 @@ body {
 
 .btn-red {
   background-color: rgb(203, 76, 76) !important;
+}
+
+.how-many-win {
+  margin: 10px 0px 10px 0px;
+  font-weight: bold;
 }
