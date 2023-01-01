@@ -1,1 +1,25 @@
-@media(max-width: 1110px) {}
+@media (max-width: 400px) {
+  .headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    text-align: center;
+  }
+
+  .copy-input-field {
+    width: 250px !important;
+  }
+
+  .how-many {
+    width: 250px;
+  }
+
+  .lucky-or-not {
+    width: 250px;
+  }
+
+  .result {
+    width: 250px;
+  }
+}

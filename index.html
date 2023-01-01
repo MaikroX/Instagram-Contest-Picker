@@ -29,7 +29,7 @@
 
   <body onload="init()">
     <div class="whole-input">
-      <div><h1 class="headline">Wer kommentiert, Gewinnt!</h1></div>
+      <div class="headline"><h1>Kommentiert & Gewonnen</h1></div>
 
       <div class="how-many">
         <div style="font-weight: bold">Wähle die Anzahl der Gewinner?</div>
@@ -40,6 +40,7 @@
             min="1"
             max="99"
             title="Füge die Anzahl der Gewinner ein."
+            value="1"
           />
         </div>
       </div>
@@ -54,18 +55,17 @@
           checked="checked"
         />
         <label for="html">Als erste kommentiert</label>
-         
+         <br />
         <!-- Radio Button vorerst disabled -->
         <input
           type="radio"
           id="lucky"
           name="luck"
           value="random"
-          disabled
           title="Noch in Entwicklung"
         />
          
-        <label for="html" style="color: gray">Zufällige Kommentare</label>
+        <label for="html">Zufällige Kommentare</label>
         <!-- Radio Button vorerst disabled -->
       </div>
 

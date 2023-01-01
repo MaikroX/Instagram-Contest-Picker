@@ -1,7 +1,13 @@
 let wholeStuff = [];
 let resultName = [];
 let uniqueName = [];
+let randomElements = [];
 
+let chosenWinner;
+
+function wichIsWinner() {
+  chosenWinner = document.getElementById("howManyWin").value;
+}
 function init() {
   checkEnable();
 }
@@ -18,7 +24,9 @@ function check() {
   document.getElementById("checkAll").classList.add("d-none");
   searchUserWhoComment(search);
   deleteDublicates();
-  writeWinner(found);
+  // writeWinner(found);
+  // getRandomElements();
+  checkRandomOrNot(found);
 }
 
 function searchUserWhoComment(search) {
@@ -38,7 +46,7 @@ function deleteDublicates() {
 }
 
 function writeWinner(found) {
-  let chosenWinner = document.getElementById("howManyWin").value;
+  wichIsWinner();
   if (chosenWinner == 0) {
     alert("Bitte wähle aus wie viele Gewinner ermittelt werden sollen.");
     document.getElementById("checkAll").classList.remove("d-none");
@@ -94,3 +102,40 @@ function checkEnable() {
 //#endregion
 // Beispiel Post
 // https://www.instagram.com/p/CmHyd1Ho2oh/
+
+// TEST ob Random Elements funktioniert //
+
+function getRandomElements() {
+  randomElements = [...uniqueName[0]];
+  for (let i = 0; i < randomElements.length; i++) {
+    const randomIndex = Math.floor(Math.random() * randomElements.length);
+    const temp = randomElements[i];
+    randomElements[i] = randomElements[randomIndex];
+    randomElements[randomIndex] = temp;
+  }
+  wichIsWinner();
+  console.log("REALLY RANDOM" + " " + randomElements);
+  let found = document.getElementById("resultOfNames");
+  found.innerHTML += /*html*/ `
+  <div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
+  `;
+  for (let i = 0; i < chosenWinner; i++) {
+    let winner = randomElements[i];
+    winner = winner.substring(0, winner.length - 1);
+    found.innerHTML += /*html*/ `
+  <div>
+    <div>${winner}</div>
+  </div>
+`;
+  }
+}
+
+function checkRandomOrNot(found) {
+  let choice = document.querySelector('input[name="luck"]:checked').value;
+  console.log(choice);
+  if (choice == "notRandom") {
+    writeWinner(found);
+  } else {
+    getRandomElements();
+  }
+}
