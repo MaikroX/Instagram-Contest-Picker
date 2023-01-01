@@ -2,6 +2,7 @@ let wholeStuff = [];
 let resultName = [];
 let uniqueName = [];
 let randomElements = [];
+let luckyOnes = [];
 
 let chosenWinner;
 
@@ -65,14 +66,17 @@ function writeWinner(found) {
     } else {
       for (let i = 0; i < chosenWinner; i++) {
         let winner = uniqueName[0][i];
+        luckyOnes.push(winner);
         winner = winner.substring(0, winner.length - 1);
         found.innerHTML += /*html*/ `
       <div>
         <div>${winner}</div>
       </div>
+
     `;
       }
     }
+    sortNames(found);
   }
 }
 
@@ -80,10 +84,13 @@ function reset() {
   document.getElementById("completeInput").value = "";
   document.getElementById("resultOfNames").innerHTML = "";
   document.getElementById("checkAll").classList.remove("d-none");
-  document.getElementById("howManyWin").value = "";
+  document.getElementById("howManyWin").value = "1";
+  let radioButton = document.getElementById("notLucky");
+  radioButton.checked = true;
   wholeStuff = [];
   resultName = [];
   uniqueName = [];
+  luckyOnes = [];
   checkEnable();
 }
 
@@ -128,6 +135,7 @@ function getRandomElements() {
   </div>
 `;
   }
+  sortNames(found);
 }
 
 function checkRandomOrNot(found) {
@@ -137,5 +145,33 @@ function checkRandomOrNot(found) {
     writeWinner(found);
   } else {
     getRandomElements();
+  }
+}
+
+function sortNames(found) {
+  found.innerHTML += /*html*/ `
+  <div class="sort" id="sortIt"><button onclick="sortTheNames()">Sortieren</button></div>
+      `;
+}
+
+function sortTheNames() {
+  luckyOnes.sort();
+  let radioButton = document.getElementById("notLucky");
+  let found = document.getElementById("resultOfNames");
+  found.innerHTML = "";
+  found.innerHTML += /*html*/ `<div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
+  `;
+  if ((radioButton.checked = true)) {
+    for (let i = 0; i < chosenWinner; i++) {
+      let uniqueNames = luckyOnes[i];
+      uniqueNames = uniqueNames.substring(0, uniqueNames.length - 1);
+      found.innerHTML += /*html*/ `
+      <div>
+        <div>${uniqueNames}</div>
+      </div>
+  `;
+    }
+  } else {
+    // hier MÜSSEN NOCH DIE RANDOM Gewinner soritiert werden //
   }
 }
