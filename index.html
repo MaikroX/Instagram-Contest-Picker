@@ -29,80 +29,85 @@
 
   <body onload="init()">
     <div class="whole-input">
-      <div class="headline"><h1>Kommentiert & Gewonnen</h1></div>
+      <div class="input-inner">
+        <div class="headline">
+          <h1>Instagram Gewinnspiel</h1>
+          <h4>Welcher Kommentar gewinnt ?</h4>
+        </div>
 
-      <div class="how-many">
-        <div style="font-weight: bold">Wähle die Anzahl der Gewinner?</div>
+        <div class="how-many">
+          <div>Wähle die Anzahl der Gewinner?</div>
+          <div>
+            <input
+              id="howManyWin"
+              type="number"
+              min="1"
+              max="100"
+              maxlength="3"
+              title="Füge die Anzahl der Gewinner ein."
+              value="1"
+            />
+          </div>
+        </div>
+
+        <div class="lucky-or-not">
+           
+          <input
+            type="radio"
+            id="notLucky"
+            name="luck"
+            value="notRandom"
+            checked="checked"
+            title="not random User"
+          />
+          <label for="html">Als erste kommentiert</label>
+           <br />
+          <!-- Radio Button vorerst disabled -->
+          <input
+            type="radio"
+            id="lucky"
+            name="luck"
+            value="random"
+            title="ranom User"
+          />
+           
+          <label for="html">Zufällige Kommentare</label>
+          <!-- Radio Button vorerst disabled -->
+        </div>
+
         <div>
           <input
-            id="howManyWin"
-            type="number"
-            min="1"
-            max="100"
-            maxlength="3"
-            title="Füge die Anzahl der Gewinner ein."
-            value="1"
+            id="completeInput"
+            class="copy-input-field"
+            type="text"
+            title="Copy & Paste all comments from Instagram in here"
           />
         </div>
-      </div>
-
-      <div class="lucky-or-not">
-         
-        <input
-          type="radio"
-          id="notLucky"
-          name="luck"
-          value="notRandom"
-          checked="checked"
-          title="not random User"
-        />
-        <label for="html">Als erste kommentiert</label>
-         <br />
-        <!-- Radio Button vorerst disabled -->
-        <input
-          type="radio"
-          id="lucky"
-          name="luck"
-          value="random"
-          title="ranom User"
-        />
-         
-        <label for="html">Zufällige Kommentare</label>
-        <!-- Radio Button vorerst disabled -->
-      </div>
-
-      <div>
-        <input
-          id="completeInput"
-          class="copy-input-field"
-          type="text"
-          title="Copy & Paste all comments from Instagram in here"
-        />
-      </div>
-      <div class="buttons">
-        <div>
-          <button
-            class="button-optics"
-            onclick="check()"
-            title="Copy & Paste all comments in the box above"
-            id="checkAll"
-          >
-            CHECK
-          </button>
+        <div class="buttons">
+          <div>
+            <button
+              class="button-optics"
+              onclick="check()"
+              title="Copy & Paste all comments in the box above"
+              id="checkAll"
+            >
+              CHECK
+            </button>
+          </div>
+          <div>
+            <button
+              class="button-optics btn-red"
+              onclick="reset()"
+              title="Reset all inputs and clear all boxes"
+              id="resetAll"
+            >
+              RESET
+            </button>
+          </div>
         </div>
         <div>
-          <button
-            class="button-optics btn-red"
-            onclick="reset()"
-            title="Reset all inputs and clear all boxes"
-            id="resetAll"
-          >
-            RESET
-          </button>
+          <div class="result" id="resultOfNames"></div>
         </div>
-      </div>
-      <div>
-        <div class="result" id="resultOfNames"></div>
       </div>
     </div>
   </body>

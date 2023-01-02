@@ -25,8 +25,6 @@ function check() {
   document.getElementById("checkAll").classList.add("d-none");
   searchUserWhoComment(search);
   deleteDublicates();
-  // writeWinner(found);
-  // getRandomElements();
   checkRandomOrNot(found);
 }
 
@@ -55,6 +53,7 @@ function writeWinner(found) {
     found.innerHTML += /*html*/ `
   <div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
     `;
+    sortNames(found);
     if (uniqueName[0].length < chosenWinner) {
       alert(
         `Es gibt leider zu wenig Mitspieler. Wähle maximal` +
@@ -76,7 +75,6 @@ function writeWinner(found) {
     `;
       }
     }
-    sortNames(found);
   }
 }
 
@@ -122,12 +120,15 @@ function getRandomElements() {
   }
   wichIsWinner();
   console.log("REALLY RANDOM" + " " + randomElements);
+
   let found = document.getElementById("resultOfNames");
   found.innerHTML += /*html*/ `
   <div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
   `;
+  sortNames(found);
   for (let i = 0; i < chosenWinner; i++) {
     let winner = randomElements[i];
+    luckyOnes.push(winner);
     winner = winner.substring(0, winner.length - 1);
     found.innerHTML += /*html*/ `
   <div>
@@ -135,7 +136,6 @@ function getRandomElements() {
   </div>
 `;
   }
-  sortNames(found);
 }
 
 function checkRandomOrNot(found) {
@@ -150,7 +150,7 @@ function checkRandomOrNot(found) {
 
 function sortNames(found) {
   found.innerHTML += /*html*/ `
-  <div class="sort" id="sortIt"><button onclick="sortTheNames()">Sortieren</button></div>
+  <div class="sort" id="sortIt"><button class="sort-button" onclick="sortTheNames()">Sortieren</button></div>
       `;
 }
 
