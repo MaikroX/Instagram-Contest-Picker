@@ -17,6 +17,7 @@ function init() {
 
 function check() {
   loadanimation();
+  document.getElementById("completeInput").classList.add("d-none");
   let search = document.getElementById("completeInput").value;
   search = search.toLowerCase();
   let words = search.split(" ");
