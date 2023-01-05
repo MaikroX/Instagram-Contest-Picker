@@ -21,9 +21,14 @@ h4 {
   height: 100vh;
 }
 
+.first-inputs {
+  display: flex felx;
+}
+
 .how-many {
   width: 400px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
@@ -37,8 +42,6 @@ h4 {
   border-radius: 4px;
   border: 2px;
   height: 36px;
-  width: 60px;
-  margin-left: 16px;
 }
 
 .lucky-or-not {
@@ -122,12 +125,34 @@ h4 {
 }
 
 .input-inner {
-  width: 450px;
   background-color: #393939;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 700px;
+  padding: 4px;
   border-radius: 12px;
+}
+
+.output-names {
+  display: flex;
+  justify-content: space-evenly;
+  width: 400px;
+}
+
+.names-inner {
+  cursor: pointer;
+}
+/* Remove arrows from input */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

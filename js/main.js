@@ -38,10 +38,14 @@ function searchUserWhoComment(search) {
   }
 }
 
+// This Function delete dublictates and slice the last letter from Names, cause its allways 's'
 function deleteDublicates() {
   let unique = Array.from(new Set(resultName));
-  uniqueName.push(unique);
-  console.log(unique);
+  let modified = unique.map((word) => {
+    return word.slice(0, -1);
+  });
+  uniqueName.push(modified);
+  console.log(modified);
 }
 
 function writeWinner(found) {
@@ -66,10 +70,9 @@ function writeWinner(found) {
       for (let i = 0; i < chosenWinner; i++) {
         let winner = uniqueName[0][i];
         luckyOnes.push(winner);
-        winner = winner.substring(0, winner.length - 1);
         found.innerHTML += /*html*/ `
-      <div>
-        <div>${winner}</div>
+      <div class="output-names">
+        <div id="deleteName(${i})" class="names-inner" onclick="deleteName(${i})">${winner}</div>
       </div>
 
     `;
@@ -108,8 +111,6 @@ function checkEnable() {
 // Beispiel Post
 // https://www.instagram.com/p/CmHyd1Ho2oh/
 
-// TEST ob Random Elements funktioniert //
-
 function getRandomElements() {
   randomElements = [...uniqueName[0]];
   for (let i = 0; i < randomElements.length; i++) {
@@ -129,7 +130,6 @@ function getRandomElements() {
   for (let i = 0; i < chosenWinner; i++) {
     let winner = randomElements[i];
     luckyOnes.push(winner);
-    winner = winner.substring(0, winner.length - 1);
     found.innerHTML += /*html*/ `
   <div>
     <div>${winner}</div>
@@ -164,14 +164,19 @@ function sortTheNames() {
   if ((radioButton.checked = true)) {
     for (let i = 0; i < chosenWinner; i++) {
       let uniqueNames = luckyOnes[i];
-      uniqueNames = uniqueNames.substring(0, uniqueNames.length - 1);
       found.innerHTML += /*html*/ `
       <div>
         <div>${uniqueNames}</div>
       </div>
   `;
     }
-  } else {
-    // hier MÜSSEN NOCH DIE RANDOM Gewinner soritiert werden //
   }
+}
+
+// this function deletes the name onclick if it is not allowed to win
+function deleteName(i) {
+  let deletedName = document.getElementById(`deleteName(${i})`).innerHTML;
+  deletedName = document
+    .getElementById(`deleteName(${i})`)
+    .classList.add("d-none");
 }
