@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "roboto", sans-serif, Arial, Helvetica;
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(32, 32, 32);
 }
 
 .headline {
@@ -81,7 +81,7 @@ h4 {
   width: 400px;
   height: 400px;
   overflow-y: auto;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .d-none {
@@ -98,7 +98,7 @@ h4 {
   width: 90px;
   height: 40px;
   background-color: rgb(22, 211, 12);
-  border-radius: 0px 12px 0px 12px;
+  border-radius: 4px;
   color: white;
   margin: 8px;
   font-weight: bold;
@@ -117,11 +117,11 @@ h4 {
 .sort-button {
   width: 82px;
   height: 32px;
-  background-color: rgb(76 81 75);
+  background-color: rgb(234 137 39);
   border-radius: 4px;
   color: white;
   margin: 8px;
-  font-weight: bold;
+  border: none;
 }
 
 .input-inner {
@@ -132,6 +132,7 @@ h4 {
   align-items: center;
   padding: 4px;
   border-radius: 12px;
+  filter: drop-shadow(2px 0px 9px black);
 }
 
 .output-names {
@@ -155,4 +156,12 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.matrix {
+  position: fixed;
+  width: 400px;
+  border-radius: 4px;
+  padding: 0px;
+  filter: hue-rotate(57deg);
 }

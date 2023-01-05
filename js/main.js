@@ -16,6 +16,7 @@ function init() {
 }
 
 function check() {
+  loadanimation();
   let search = document.getElementById("completeInput").value;
   search = search.toLowerCase();
   let words = search.split(" ");
@@ -47,7 +48,17 @@ function deleteDublicates() {
     return word.slice(0, -1);
   });
   uniqueName.push(modified);
-  console.log(modified);
+  checkIfUserIsRealUser();
+}
+
+function checkIfUserIsRealUser(modified) {
+  for (let i = 0; i < uniqueName[0].length; i++) {
+    if (uniqueName[0][i].length < 4) {
+      uniqueName[0].splice(i, 1);
+      i--;
+    }
+    console.log(modified);
+  }
 }
 
 function writeWinner(found) {
@@ -193,4 +204,12 @@ function resetValues() {
   document.getElementById("howManyWin").value = "1";
   let radioButton = document.getElementById("notLucky");
   radioButton.checked = true;
+}
+
+function loadanimation() {
+  let animation = document.getElementById("matrix");
+  animation.classList.remove("d-none");
+  setTimeout(() => {
+    animation.classList.add("d-none");
+  }, 3000);
 }

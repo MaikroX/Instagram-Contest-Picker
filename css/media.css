@@ -1,6 +1,7 @@
 @media (max-width: 400px) {
   .headline {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 250px;
@@ -13,6 +14,13 @@
 
   .how-many {
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mobile-how-many-winner {
+    display: flex;
   }
 
   .lucky-or-not {
@@ -21,5 +29,10 @@
 
   .result {
     width: 250px;
+  }
+
+  .matrix {
+    width: 250px;
+    height: 400px;
   }
 }

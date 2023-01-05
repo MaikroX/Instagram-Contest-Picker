@@ -12,7 +12,7 @@ function headlineHowManyTemp(chosenWinner) {
 
 function sortButtonTemp(found) {
   found.innerHTML += /*html*/ `
-    <div class="sort" id="sortIt"><button class="sort-button" onclick="sortTheNames()">Sortieren</button></div>
+    <div class="sort" id="sortIt"><button class="sort-button" onclick="sortTheNames()">VON A-Z</button></div>
         `;
 }
 
