@@ -185,6 +185,7 @@ function alertChooseMaxPlayer() {
 }
 
 function resetAll() {
+  document.getElementById("completeInput").classList.remove("d-none");
   resetArrays();
   resetValues();
   checkEnable();
