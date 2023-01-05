@@ -3,13 +3,15 @@ let resultName = [];
 let uniqueName = [];
 let randomElements = [];
 let luckyOnes = [];
+let withDelete = [];
 
 let chosenWinner;
 
-function wichIsWinner() {
+function howManyWin() {
   chosenWinner = document.getElementById("howManyWin").value;
 }
 function init() {
+  resetAll();
   checkEnable();
 }
 
@@ -22,10 +24,10 @@ function check() {
   found.innerHTML = "";
   firstWinner = wholeStuff[0][0];
   resultName.push(firstWinner);
-  document.getElementById("checkAll").classList.add("d-none");
   searchUserWhoComment(search);
   deleteDublicates();
   checkRandomOrNot(found);
+  document.getElementById("checkAll").classList.add("d-none");
 }
 
 function searchUserWhoComment(search) {
@@ -49,50 +51,32 @@ function deleteDublicates() {
 }
 
 function writeWinner(found) {
-  wichIsWinner();
+  howManyWin();
   if (chosenWinner == 0) {
-    alert("Bitte wähle aus wie viele Gewinner ermittelt werden sollen.");
-    document.getElementById("checkAll").classList.remove("d-none");
+    alertChooseHowMany();
   } else {
-    found.innerHTML += /*html*/ `
-  <div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
-    `;
-    sortNames(found);
+    found.innerHTML += headlineHowManyTemp(chosenWinner);
+    sortButtonTemp(found);
     if (uniqueName[0].length < chosenWinner) {
-      alert(
-        `Es gibt leider zu wenig Mitspieler. Wähle maximal` +
-          ` ` +
-          uniqueName[0].length +
-          `.`
-      );
+      alertChooseMaxPlayer();
       document.getElementById("checkAll").classList.remove("d-none");
     } else {
-      for (let i = 0; i < chosenWinner; i++) {
-        let winner = uniqueName[0][i];
-        luckyOnes.push(winner);
-        found.innerHTML += /*html*/ `
-      <div class="output-names">
-        <div id="deleteName(${i})" class="names-inner" onclick="deleteName(${i})">${winner}</div>
-      </div>
-
-    `;
-      }
+      theyAreWinner(found, chosenWinner, uniqueName);
     }
   }
 }
 
-function reset() {
-  document.getElementById("completeInput").value = "";
-  document.getElementById("resultOfNames").innerHTML = "";
-  document.getElementById("checkAll").classList.remove("d-none");
-  document.getElementById("howManyWin").value = "1";
-  let radioButton = document.getElementById("notLucky");
-  radioButton.checked = true;
-  wholeStuff = [];
-  resultName = [];
-  uniqueName = [];
-  luckyOnes = [];
-  checkEnable();
+function theyAreWinner(found, chosenWinner, uniqueName) {
+  for (let i = 0; i < chosenWinner; i++) {
+    let winner = uniqueName[0][i];
+    luckyOnes.push(winner);
+    found.innerHTML += /*html*/ `
+  <div class="output-names">
+    <div id="deleteName(${i})" class="names-inner" onclick="deleteName(${i})">${winner}</div>
+  </div>
+
+`;
+  }
 }
 
 function checkEnable() {
@@ -107,37 +91,6 @@ function checkEnable() {
   });
 }
 
-//#endregion
-// Beispiel Post
-// https://www.instagram.com/p/CmHyd1Ho2oh/
-
-function getRandomElements() {
-  randomElements = [...uniqueName[0]];
-  for (let i = 0; i < randomElements.length; i++) {
-    const randomIndex = Math.floor(Math.random() * randomElements.length);
-    const temp = randomElements[i];
-    randomElements[i] = randomElements[randomIndex];
-    randomElements[randomIndex] = temp;
-  }
-  wichIsWinner();
-  console.log("REALLY RANDOM" + " " + randomElements);
-
-  let found = document.getElementById("resultOfNames");
-  found.innerHTML += /*html*/ `
-  <div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
-  `;
-  sortNames(found);
-  for (let i = 0; i < chosenWinner; i++) {
-    let winner = randomElements[i];
-    luckyOnes.push(winner);
-    found.innerHTML += /*html*/ `
-  <div>
-    <div>${winner}</div>
-  </div>
-`;
-  }
-}
-
 function checkRandomOrNot(found) {
   let choice = document.querySelector('input[name="luck"]:checked').value;
   console.log(choice);
@@ -148,10 +101,32 @@ function checkRandomOrNot(found) {
   }
 }
 
-function sortNames(found) {
-  found.innerHTML += /*html*/ `
-  <div class="sort" id="sortIt"><button class="sort-button" onclick="sortTheNames()">Sortieren</button></div>
-      `;
+function getRandomElements() {
+  randomElements = [...uniqueName[0]];
+  getTheRandom(randomElements);
+  howManyWin();
+  console.log("REALLY RANDOM" + " " + randomElements);
+  let found = document.getElementById("resultOfNames");
+  found.innerHTML += headlineHowManyTemp(chosenWinner);
+  sortButtonTemp(found);
+  writeRandomWinner(found);
+}
+
+function getTheRandom(randomElements) {
+  for (let i = 0; i < randomElements.length; i++) {
+    const randomIndex = Math.floor(Math.random() * randomElements.length);
+    const random = randomElements[i];
+    randomElements[i] = randomElements[randomIndex];
+    randomElements[randomIndex] = random;
+  }
+}
+
+function writeRandomWinner(found) {
+  for (let i = 0; i < chosenWinner; i++) {
+    let winner = randomElements[i];
+    luckyOnes.push(winner);
+    found.innerHTML += writeRandomWinnerTemp(winner);
+  }
 }
 
 function sortTheNames() {
@@ -159,16 +134,15 @@ function sortTheNames() {
   let radioButton = document.getElementById("notLucky");
   let found = document.getElementById("resultOfNames");
   found.innerHTML = "";
-  found.innerHTML += /*html*/ `<div class="how-many-win">Anzahl Gewinner: <span >${chosenWinner}</span></div>
-  `;
+  found.innerHTML += headlineHowManyTemp(chosenWinner);
+  sortNamesAfterKlick(radioButton, chosenWinner, found);
+}
+
+function sortNamesAfterKlick(radioButton, chosenWinner, found) {
   if ((radioButton.checked = true)) {
     for (let i = 0; i < chosenWinner; i++) {
       let uniqueNames = luckyOnes[i];
-      found.innerHTML += /*html*/ `
-      <div>
-        <div>${uniqueNames}</div>
-      </div>
-  `;
+      found.innerHTML += sortedAfterKlickTemp(uniqueNames);
     }
   }
 }
@@ -179,4 +153,44 @@ function deleteName(i) {
   deletedName = document
     .getElementById(`deleteName(${i})`)
     .classList.add("d-none");
+  let deleted = uniqueName[0].splice(i, 1);
+  withDelete.push(deleted);
+  console.log("Einer gelöscht" + " " + withDelete);
+}
+
+function alertChooseHowMany() {
+  alert("Bitte wähle aus wie viele Gewinner ermittelt werden sollen.");
+  document.getElementById("checkAll").classList.remove("d-none");
+}
+
+function alertChooseMaxPlayer() {
+  alert(
+    `Es gibt leider zu wenig Mitspieler. Wähle maximal` +
+      ` ` +
+      uniqueName[0].length +
+      `.`
+  );
+}
+
+function resetAll() {
+  resetArrays();
+  resetValues();
+  checkEnable();
+}
+
+function resetArrays() {
+  wholeStuff = [];
+  resultName = [];
+  uniqueName = [];
+  luckyOnes = [];
+  withDelete = [];
+}
+
+function resetValues() {
+  document.getElementById("completeInput").value = "";
+  document.getElementById("resultOfNames").innerHTML = "";
+  document.getElementById("checkAll").classList.remove("d-none");
+  document.getElementById("howManyWin").value = "1";
+  let radioButton = document.getElementById("notLucky");
+  radioButton.checked = true;
 }
