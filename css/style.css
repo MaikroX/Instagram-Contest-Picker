@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: "roboto", sans-serif, Arial, Helvetica;
   /* background-color: #1b1719; */
-  background-image: url(/img/bg.jpg);
+  background-image: url(../img/bg.jpg);
 }
 
 .logo {
